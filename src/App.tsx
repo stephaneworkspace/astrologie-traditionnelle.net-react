@@ -53,7 +53,7 @@ function App() {
   });
 
   const getBodies = async () => {
-    const sw_debug = true;
+    const sw_debug = false;
     let url = "https://astrologie-traditionnelle.net/";
     if (sw_debug) {
       url = "http://localhost:8888/"
