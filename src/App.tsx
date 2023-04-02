@@ -25,12 +25,21 @@ interface FormData {
 interface JsonCgiApi {
   bodie: [{
     asset: string,
-    deg: number,
-    deg_min_sec: string,
-    min: number,
     nom: string,
+    deg_min_sec: string,
+    deg: number,
+    min: number,
     sec: number,
     sign: {
+      asset: string,
+      id: number,
+      nom: string,
+    }
+    deg_min_sec_transit: string,
+    deg_transit: number,
+    min_transit: number,
+    sec_transit: number,
+    sign_transit: {
       asset: string,
       id: number,
       nom: string,
@@ -43,12 +52,17 @@ function App() {
   const [bodies, setBodies] = React.useState<JsonCgiApi>({
     bodie: [{
       asset: "",
-      deg: 0,
-      deg_min_sec: "",
-      min: 0,
       nom: "",
+      deg_min_sec: "",
+      deg: 0,
+      min: 0,
       sec: 0,
-      sign: {asset: "", id: 0, nom: ""}
+      sign: {asset: "", id: 0, nom: ""},
+      deg_min_sec_transit: "",
+      deg_transit: 0,
+      min_transit: 0,
+      sec_transit: 0,
+      sign_transit: {asset: "", id: 0, nom: ""}
     }]
   });
 
@@ -104,6 +118,13 @@ function App() {
       <td style={{textAlign: "right"}}>{el.min}</td>
       <td style={{textAlign: "right"}}>'</td>
       <td style={{textAlign: "right"}}>{el.sec}</td>
+      <td style={{textAlign: "right"}}>"</td>
+      <td><img src={"data:image/svg+xml;base64," + el.sign_transit.asset} width={20} height={20} alt={el.sign.nom}/></td>
+      <td style={{textAlign: "right"}}>{el.deg_transit}</td>
+      <td style={{textAlign: "right"}}>°</td>
+      <td style={{textAlign: "right"}}>{el.min_transit}</td>
+      <td style={{textAlign: "right"}}>'</td>
+      <td style={{textAlign: "right"}}>{el.sec_transit}</td>
       <td style={{textAlign: "right"}}>"</td>
     </tr>)
   }))
