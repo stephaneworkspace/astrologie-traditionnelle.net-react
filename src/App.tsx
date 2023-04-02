@@ -96,10 +96,15 @@ function App() {
   let bodiesTr: JSX.Element[] = [];
   bodies.bodie.forEach((el => {
     bodiesTr.push(<tr key={el.nom}>
-      <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20}/></td>
+      <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
       <td style={{textAlign: "left"}}>{el.nom}</td>
-      <td></td>
-      <td></td>
+      <td><img src={"data:image/svg+xml;base64," + el.sign.asset} width={20} height={20} alt={el.sign.nom}/></td>
+      <td style={{textAlign: "right"}}>{el.deg}</td>
+      <td style={{textAlign: "right"}}>°</td>
+      <td style={{textAlign: "right"}}>{el.min}</td>
+      <td style={{textAlign: "right"}}>'</td>
+      <td style={{textAlign: "right"}}>{el.sec}</td>
+      <td style={{textAlign: "right"}}>"</td>
     </tr>)
   }))
 
@@ -116,6 +121,12 @@ function App() {
               "&lng=" + formData.lng +
               "&gmt=" + formData.gmt +
               "&color=" + formData.color + "\")"}}></div>
+        <table>
+          <tbody>
+          {bodiesTr}
+          </tbody>
+        </table>
+        <p />
         <form onSubmit={handleSubmit}>
           <table>
             <tbody>
@@ -186,18 +197,6 @@ function App() {
             </tbody>
           </table>
         </form>
-        <table>
-          <thead>
-            <tr>
-              <td colSpan={2} style={{textAlign: "left"}}>Astre</td>
-              <td>Signe</td>
-              <td>Position</td>
-            </tr>
-          </thead>
-          <tbody>
-            {bodiesTr}
-          </tbody>
-        </table>
       </header>
     </div>
   );
