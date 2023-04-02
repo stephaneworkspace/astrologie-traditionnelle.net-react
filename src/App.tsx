@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 //import logo from './logo.svg';
 import './App.css';
 /*
@@ -23,10 +23,31 @@ interface FormData {
 
 function App() {
   const [formData, setFormData] = React.useState<FormData>({ year: 1984, month: 4, day: 1, hour: 0, min: 0, lat: 46.12, lng: 6.09, gmt: 2, color: 1  });
+  const [answer, setAnwser] = useState();
+
+  const getAnswer = async () => {
+    const sw_debug = false;
+    let url = "https://astrologie-traditionnelle.net/";
+    if (sw_debug) {
+      url = "http://localhost:8888/"
+    }
+    const res = await fetch(url + "cgi-bin/SweInterface.cgi?sw_json=true" +
+          "&year=" + formData.year +
+          "&month=" + formData.month +
+          "&day=" + formData.day +
+          "&hour=" + formData.hour +
+          "&min=" + formData.min +
+          "&lat=" + formData.lat +
+          "&lng=" + formData.lng +
+          "&gmt=" + formData.gmt);
+    const answer = await res.json();
+    setAnwser(answer);
+  };
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
+    getAnswer();
   }
 
   function handleSelectChange(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -38,11 +59,15 @@ function App() {
     event.preventDefault();
   }
 
+  useEffect(() => {
+    getAnswer();
+  }, []);
+
   const [selectValue, setSelectValue] = React.useState("");
 
   return (
       <div className="App">
-      <header className="App-header" style={{backgroundColor: formData.color == 0 ? "#ffffff" : "#282c34", color: formData.color == 0 ? "black" : "white"}}>
+      <header className="App-header" style={{backgroundColor: formData.color === 0 ? "#ffffff" : "#282c34", color: formData.color === 0 ? "black" : "white"}}>
         <div className="Chart" style={{backgroundImage: "url(\"http://astrologie-traditionnelle.net/cgi-bin/SweInterface.cgi?sw_chart=true" +
               "&year=" + formData.year +
               "&month=" + formData.month +
@@ -53,6 +78,7 @@ function App() {
               "&lng=" + formData.lng +
               "&gmt=" + formData.gmt +
               "&color=" + formData.color + "\")"}}></div>
+        <div>{JSON.stringify(answer)}</div>
         <form onSubmit={handleSubmit}>
           <table>
             <tr>
