@@ -40,7 +40,7 @@ interface JsonCgiApi {
 
 function App() {
   const [formData, setFormData] = React.useState<FormData>({ year: 1984, month: 4, day: 1, hour: 0, min: 0, lat: 46.12, lng: 6.09, gmt: 2, color: 1  });
-  const [answer, setBodies] = React.useState<JsonCgiApi>({
+  const [bodies, setBodies] = React.useState<JsonCgiApi>({
     bodie: [{
       asset: "",
       deg: 0,
@@ -68,9 +68,8 @@ function App() {
         "&lng=" + formData.lng +
         "&gmt=" + formData.gmt;
     const response = await axios.get(url)
-    console.log(response)
-    const answer = await response.data;
-    setBodies(answer);
+    const data = await response.data;
+    setBodies(data);
   }
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -94,9 +93,19 @@ function App() {
 
   const [selectValue, setSelectValue] = React.useState("");
 
+  let bodiesTr: JSX.Element[] = [];
+  bodies.bodie.forEach((el => {
+    bodiesTr.push(<tr key={el.nom}>
+      <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20}/></td>
+      <td style={{textAlign: "left"}}>{el.nom}</td>
+      <td></td>
+      <td></td>
+    </tr>)
+  }))
+
   return (
       <div className="App">
-      <header className="App-header" style={{backgroundColor: formData.color === 0 ? "#ffffff" : "#282c34", color: formData.color === 0 ? "black" : "white"}}>
+      <header className="App-header" style={{backgroundColor: formData.color == 0 ? "#ffffff" : "#282c34", color: formData.color == 0 ? "black" : "white"}}>
         <div className="Chart" style={{backgroundImage: "url(\"http://astrologie-traditionnelle.net/cgi-bin/SweInterface.cgi?sw_chart=true" +
               "&year=" + formData.year +
               "&month=" + formData.month +
@@ -107,7 +116,6 @@ function App() {
               "&lng=" + formData.lng +
               "&gmt=" + formData.gmt +
               "&color=" + formData.color + "\")"}}></div>
-        <div>{answer.bodie[0].nom}</div>
         <form onSubmit={handleSubmit}>
           <table>
             <tbody>
@@ -178,6 +186,18 @@ function App() {
             </tbody>
           </table>
         </form>
+        <table>
+          <thead>
+            <tr>
+              <td colSpan={2} style={{textAlign: "left"}}>Astre</td>
+              <td>Signe</td>
+              <td>Position</td>
+            </tr>
+          </thead>
+          <tbody>
+            {bodiesTr}
+          </tbody>
+        </table>
       </header>
     </div>
   );
