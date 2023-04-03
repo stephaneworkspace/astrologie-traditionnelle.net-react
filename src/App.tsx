@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from "axios"
 //import logo from './logo.svg';
 import './App.css';
+import {match} from "assert";
 /*
 <img src={logo} className="App-logo" alt="logo" />
 */
@@ -25,6 +26,8 @@ interface FormData {
 interface JsonCgiApi {
   aspect: [{
     id: number,
+    nom: string,
+    asset?: string,
     liens: [{
       aspect_id?: number,
       aspect_name?: string,
@@ -62,6 +65,8 @@ function App() {
   const [bodies, setBodies] = React.useState<JsonCgiApi>({
     aspect: [{
       id: 0,
+      nom: "",
+      asset: undefined,
       liens: [{
         aspect_id: undefined,
         aspect_name: undefined,
@@ -149,6 +154,227 @@ function App() {
     </tr>)
   }))
 
+  let aspectTr: JSX.Element[] = [];
+  bodies.aspect.forEach((el => {
+    switch (el.id) {
+      case 0:
+        aspectTr.push(<tr key={el.id}>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+          <td colSpan={15}></td>
+        </tr>)
+        break
+      case 1:
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder"></td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+          <td colSpan={14}></td>
+        </tr>)
+        break
+      case 2:
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+          <td colSpan={13}></td>
+        </tr>)
+        break
+      case 3:
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+          <td colSpan={12}></td>
+        </tr>)
+        break
+      case 4:
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+          <td colSpan={11}></td>
+        </tr>)
+        break
+      case 5:
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+          <td colSpan={10}></td>
+        </tr>)
+        break
+      case 6:
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+          <td colSpan={9}></td>
+        </tr>)
+        break
+      case 7:
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+          <td colSpan={8}></td>
+        </tr>)
+        break
+      case 8:
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+          <td colSpan={7}></td>
+        </tr>)
+        break
+      case 9:
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+          <td colSpan={6}></td>
+        </tr>)
+        break
+      case 11:
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+          <td colSpan={5}></td>
+        </tr>)
+        break
+      case 15:
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+          <td colSpan={4}></td>
+        </tr>)
+        break
+      case 17:
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+          <td colSpan={3}></td>
+        </tr>)
+        break
+      case 24:
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+          <td colSpan={2}></td>
+        </tr>)
+        break
+      case 98:
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td>Asc</td>
+          <td></td>
+        </tr>)
+        break
+      case 99:
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td className="TableBorder"></td>
+          <td>Mc</td>
+        </tr>)
+        break
+    }
+  }))
+
   return (
       <div className="App">
       <header className="App-header" style={{backgroundColor: formData.color == 0 ? "#ffffff" : "#282c34", color: formData.color == 0 ? "black" : "white"}}>
@@ -165,6 +391,12 @@ function App() {
         <table>
           <tbody>
           {bodiesTr}
+          </tbody>
+        </table>
+        <p />
+        <table>
+          <tbody>
+          {aspectTr}
           </tbody>
         </table>
         <p />

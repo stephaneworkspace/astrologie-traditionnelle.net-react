@@ -55,3 +55,7 @@ label {
 .TableBodie {
   text-align: left;
 }
+
+.TableBorder {
+  border: 1px solid;
+}
