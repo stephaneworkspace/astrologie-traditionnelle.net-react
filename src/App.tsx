@@ -181,50 +181,6 @@ function App() {
     let chiron = <div/>;
     let ceres = <div/>;
     let noeudLunaireSud = <div/>;
-    el.liens.forEach(liens => {
-      if (liens.id == 0 && liens.asset != undefined) {
-        soleil = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
-      }
-      if (liens.id == 1 && liens.asset != undefined) {
-        lune = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
-      }
-      if (liens.id == 2 && liens.asset != undefined) {
-        mercure = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
-      }
-      if (liens.id == 3 && liens.asset != undefined) {
-        venus = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
-      }
-      if (liens.id == 4 && liens.asset != undefined) {
-        mars = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
-      }
-      if (liens.id == 5 && liens.asset != undefined) {
-        jupiter = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
-      }
-      if (liens.id == 6 && liens.asset != undefined) {
-        saturne = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
-      }
-      if (liens.id == 7 && liens.asset != undefined) {
-        uranus = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
-      }
-      if (liens.id == 8 && liens.asset != undefined) {
-        neptune = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
-      }
-      if (liens.id == 9 && liens.asset != undefined) {
-        pluton = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
-      }
-      if (liens.id == 11 && liens.asset != undefined) {
-        noeudLunaire = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
-      }
-      if (liens.id == 15 && liens.asset != undefined) {
-        chiron = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
-      }
-      if (liens.id == 17 && liens.asset != undefined) {
-        ceres = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
-      }
-      if (liens.id == 24 && liens.asset != undefined) {
-        noeudLunaireSud = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
-      }
-    })
     switch (el.id) {
       case 0: // Soleil
         aspectTr.push(<tr key={el.id}>
@@ -233,6 +189,14 @@ function App() {
         </tr>)
         break
       case 1: // Lune
+        bodies.aspect.forEach(a => {
+          a.liens.forEach(b => {
+            if (a.id == 0 && b.id == 1 && b.asset != undefined) {
+              soleil =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+          });
+        })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
           <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
@@ -240,6 +204,18 @@ function App() {
         </tr>)
         break
       case 2: // Mercure
+        bodies.aspect.forEach(a => {
+          a.liens.forEach(b => {
+            if (a.id == 0 && b.id == 2 && b.asset != undefined) {
+              soleil =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 1 && b.id == 2 && b.asset != undefined) {
+              lune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+          });
+        })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
           <td className="TableBorder">{lune}</td>
@@ -248,6 +224,22 @@ function App() {
         </tr>)
         break
       case 3: // Venus
+        bodies.aspect.forEach(a => {
+          a.liens.forEach(b => {
+            if (a.id == 0 && b.id == 3 && b.asset != undefined) {
+              soleil =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 1 && b.id == 3 && b.asset != undefined) {
+              lune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 2 && b.id == 3 && b.asset != undefined) {
+              mercure =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+          });
+        })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
           <td className="TableBorder">{lune}</td>
@@ -257,6 +249,26 @@ function App() {
         </tr>)
         break
       case 4: // Mars
+        bodies.aspect.forEach(a => {
+          a.liens.forEach(b => {
+            if (a.id == 0 && b.id == 4 && b.asset != undefined) {
+              soleil =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 1 && b.id == 4 && b.asset != undefined) {
+              lune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 2 && b.id == 4 && b.asset != undefined) {
+              mercure =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 3 && b.id == 4 && b.asset != undefined) {
+              venus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+          });
+        })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
           <td className="TableBorder">{lune}</td>
@@ -267,6 +279,30 @@ function App() {
         </tr>)
         break
       case 5: // Jupiter
+        bodies.aspect.forEach(a => {
+          a.liens.forEach(b => {
+            if (a.id == 0 && b.id == 5 && b.asset != undefined) {
+              soleil =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 1 && b.id == 5 && b.asset != undefined) {
+              lune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 2 && b.id == 5 && b.asset != undefined) {
+              mercure =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 3 && b.id == 5 && b.asset != undefined) {
+              venus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 4 && b.id == 5 && b.asset != undefined) {
+              mars =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+          });
+        })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
           <td className="TableBorder">{lune}</td>
@@ -278,6 +314,34 @@ function App() {
         </tr>)
         break
       case 6: // Saturne
+        bodies.aspect.forEach(a => {
+          a.liens.forEach(b => {
+            if (a.id == 0 && b.id == 6 && b.asset != undefined) {
+              soleil =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 1 && b.id == 6 && b.asset != undefined) {
+              lune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 2 && b.id == 6 && b.asset != undefined) {
+              mercure =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 3 && b.id == 6 && b.asset != undefined) {
+              venus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 4 && b.id == 6 && b.asset != undefined) {
+              mars =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 5 && b.id == 6 && b.asset != undefined) {
+              jupiter =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+          });
+        })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
           <td className="TableBorder">{lune}</td>
@@ -290,6 +354,38 @@ function App() {
         </tr>)
         break
       case 7: // Uranus
+        bodies.aspect.forEach(a => {
+          a.liens.forEach(b => {
+            if (a.id == 0 && b.id == 7 && b.asset != undefined) {
+              soleil =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 1 && b.id == 7 && b.asset != undefined) {
+              lune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 2 && b.id == 7 && b.asset != undefined) {
+              mercure =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 3 && b.id == 7 && b.asset != undefined) {
+              venus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 4 && b.id == 7 && b.asset != undefined) {
+              mars =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 5 && b.id == 7 && b.asset != undefined) {
+              jupiter =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 6 && b.id == 7 && b.asset != undefined) {
+              saturne =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+          });
+        })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
           <td className="TableBorder">{lune}</td>
@@ -303,6 +399,42 @@ function App() {
         </tr>)
         break
       case 8: // Neptune
+        bodies.aspect.forEach(a => {
+          a.liens.forEach(b => {
+            if (a.id == 0 && b.id == 8 && b.asset != undefined) {
+              soleil =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 1 && b.id == 8 && b.asset != undefined) {
+              lune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 2 && b.id == 8 && b.asset != undefined) {
+              mercure =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 3 && b.id == 8 && b.asset != undefined) {
+              venus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 4 && b.id == 8 && b.asset != undefined) {
+              mars =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 5 && b.id == 8 && b.asset != undefined) {
+              jupiter =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 6 && b.id == 8 && b.asset != undefined) {
+              saturne =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 7 && b.id == 8 && b.asset != undefined) {
+              uranus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+          });
+        })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
           <td className="TableBorder">{lune}</td>
@@ -317,6 +449,46 @@ function App() {
         </tr>)
         break
       case 9: // Pluton
+        bodies.aspect.forEach(a => {
+          a.liens.forEach(b => {
+            if (a.id == 0 && b.id == 9 && b.asset != undefined) {
+              soleil =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 1 && b.id == 9 && b.asset != undefined) {
+              lune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 2 && b.id == 9 && b.asset != undefined) {
+              mercure =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 3 && b.id == 9 && b.asset != undefined) {
+              venus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 4 && b.id == 9 && b.asset != undefined) {
+              mars =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 5 && b.id == 9 && b.asset != undefined) {
+              jupiter =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 6 && b.id == 9 && b.asset != undefined) {
+              saturne =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 7 && b.id == 9 && b.asset != undefined) {
+              uranus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 8 && b.id == 9 && b.asset != undefined) {
+              neptune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+          });
+        })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
           <td className="TableBorder">{lune}</td>
@@ -332,6 +504,50 @@ function App() {
         </tr>)
         break
       case 11: // Noeud lunaire
+        bodies.aspect.forEach(a => {
+          a.liens.forEach(b => {
+            if (a.id == 0 && b.id == 11 && b.asset != undefined) {
+              soleil =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 1 && b.id == 11 && b.asset != undefined) {
+              lune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 2 && b.id == 11 && b.asset != undefined) {
+              mercure =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 3 && b.id == 11 && b.asset != undefined) {
+              venus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 4 && b.id == 11 && b.asset != undefined) {
+              mars =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 5 && b.id == 11 && b.asset != undefined) {
+              jupiter =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 6 && b.id == 11 && b.asset != undefined) {
+              saturne =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 7 && b.id == 11 && b.asset != undefined) {
+              uranus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 8 && b.id == 11 && b.asset != undefined) {
+              neptune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 9 && b.id == 11 && b.asset != undefined) {
+              pluton =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+          });
+        })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
           <td className="TableBorder">{lune}</td>
@@ -348,6 +564,54 @@ function App() {
         </tr>)
         break
       case 15: // Chrion
+        bodies.aspect.forEach(a => {
+          a.liens.forEach(b => {
+            if (a.id == 0 && b.id == 15 && b.asset != undefined) {
+              soleil =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 1 && b.id == 15 && b.asset != undefined) {
+              lune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 2 && b.id == 15 && b.asset != undefined) {
+              mercure =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 3 && b.id == 15 && b.asset != undefined) {
+              venus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 4 && b.id == 15 && b.asset != undefined) {
+              mars =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 5 && b.id == 15 && b.asset != undefined) {
+              jupiter =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 6 && b.id == 15 && b.asset != undefined) {
+              saturne =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 7 && b.id == 15 && b.asset != undefined) {
+              uranus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 8 && b.id == 15 && b.asset != undefined) {
+              neptune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 9 && b.id == 15 && b.asset != undefined) {
+              pluton =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 11 && b.id == 15 && b.asset != undefined) {
+              noeudLunaire =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+          });
+        })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
           <td className="TableBorder">{lune}</td>
@@ -365,6 +629,58 @@ function App() {
         </tr>)
         break
       case 17: // Ceres
+        bodies.aspect.forEach(a => {
+          a.liens.forEach(b => {
+            if (a.id == 0 && b.id == 17 && b.asset != undefined) {
+              soleil =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 1 && b.id == 17 && b.asset != undefined) {
+              lune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 2 && b.id == 17 && b.asset != undefined) {
+              mercure =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 3 && b.id == 17 && b.asset != undefined) {
+              venus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 4 && b.id == 17 && b.asset != undefined) {
+              mars =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 5 && b.id == 17 && b.asset != undefined) {
+              jupiter =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 6 && b.id == 17 && b.asset != undefined) {
+              saturne =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 7 && b.id == 17 && b.asset != undefined) {
+              uranus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 8 && b.id == 17 && b.asset != undefined) {
+              neptune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 9 && b.id == 17 && b.asset != undefined) {
+              pluton =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 11 && b.id == 17 && b.asset != undefined) {
+              noeudLunaire =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 15 && b.id == 17 && b.asset != undefined) {
+              chiron =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+          });
+        })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
           <td className="TableBorder">{lune}</td>
@@ -383,6 +699,62 @@ function App() {
         </tr>)
         break
       case 24: // Noeud lunaire sud
+        bodies.aspect.forEach(a => {
+          a.liens.forEach(b => {
+            if (a.id == 0 && b.id == 24 && b.asset != undefined) {
+              soleil =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 1 && b.id == 24 && b.asset != undefined) {
+              lune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 2 && b.id == 24 && b.asset != undefined) {
+              mercure =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 3 && b.id == 24 && b.asset != undefined) {
+              venus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 4 && b.id == 24 && b.asset != undefined) {
+              mars =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 5 && b.id == 24 && b.asset != undefined) {
+              jupiter =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 6 && b.id == 24 && b.asset != undefined) {
+              saturne =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 7 && b.id == 24 && b.asset != undefined) {
+              uranus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 8 && b.id == 24 && b.asset != undefined) {
+              neptune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 9 && b.id == 24 && b.asset != undefined) {
+              pluton =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 11 && b.id == 24 && b.asset != undefined) {
+              noeudLunaire =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 15 && b.id == 24 && b.asset != undefined) {
+              chiron =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 17 && b.id == 24 && b.asset != undefined) {
+              ceres =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+          });
+        })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
           <td className="TableBorder">{lune}</td>
@@ -402,6 +774,62 @@ function App() {
         </tr>)
         break
       case 98:
+        bodies.aspect.forEach(a => {
+          a.liens.forEach(b => {
+            if (a.id == 0 && b.id == 98 && b.asset != undefined) {
+              soleil =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 1 && b.id == 98 && b.asset != undefined) {
+              lune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 2 && b.id == 98 && b.asset != undefined) {
+              mercure =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 3 && b.id == 98 && b.asset != undefined) {
+              venus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 4 && b.id == 98 && b.asset != undefined) {
+              mars =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 5 && b.id == 98 && b.asset != undefined) {
+              jupiter =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 6 && b.id == 98 && b.asset != undefined) {
+              saturne =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 7 && b.id == 98 && b.asset != undefined) {
+              uranus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 8 && b.id == 98 && b.asset != undefined) {
+              neptune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 9 && b.id == 98 && b.asset != undefined) {
+              pluton =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 11 && b.id == 98 && b.asset != undefined) {
+              noeudLunaire =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 15 && b.id == 98 && b.asset != undefined) {
+              chiron =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 17 && b.id == 98 && b.asset != undefined) {
+              ceres =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+          });
+        })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
           <td className="TableBorder">{lune}</td>
@@ -421,6 +849,62 @@ function App() {
         </tr>)
         break
       case 99:
+        bodies.aspect.forEach(a => {
+          a.liens.forEach(b => {
+            if (a.id == 0 && b.id == 99 && b.asset != undefined) {
+              soleil =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 1 && b.id == 99 && b.asset != undefined) {
+              lune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 2 && b.id == 99 && b.asset != undefined) {
+              mercure =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 3 && b.id == 99 && b.asset != undefined) {
+              venus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 4 && b.id == 99 && b.asset != undefined) {
+              mars =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 5 && b.id == 99 && b.asset != undefined) {
+              jupiter =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 6 && b.id == 99 && b.asset != undefined) {
+              saturne =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 7 && b.id == 99 && b.asset != undefined) {
+              uranus =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 8 && b.id == 99 && b.asset != undefined) {
+              neptune =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 9 && b.id == 99 && b.asset != undefined) {
+              pluton =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 11 && b.id == 99 && b.asset != undefined) {
+              noeudLunaire =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 15 && b.id == 99 && b.asset != undefined) {
+              chiron =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+            if (a.id == 17 && b.id == 99 && b.asset != undefined) {
+              ceres =
+                  <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
+            }
+          });
+        })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
           <td className="TableBorder">{lune}</td>
