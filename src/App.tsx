@@ -23,6 +23,16 @@ interface FormData {
 }
 
 interface JsonCgiApi {
+  aspect: [{
+    id: number,
+    liens: [{
+      aspect_id?: number,
+      aspect_name?: string,
+      asset?: string,
+      id: number,
+      nom: string,
+    }]
+  }],
   bodie: [{
     asset: string,
     nom: string,
@@ -50,6 +60,16 @@ interface JsonCgiApi {
 function App() {
   const [formData, setFormData] = React.useState<FormData>({ year: 1984, month: 4, day: 1, hour: 0, min: 0, lat: 46.12, lng: 6.09, gmt: 2, color: 1  });
   const [bodies, setBodies] = React.useState<JsonCgiApi>({
+    aspect: [{
+      id: 0,
+      liens: [{
+        aspect_id: undefined,
+        aspect_name: undefined,
+        asset: undefined,
+        id: 0,
+        nom: "",
+      }]
+    }],
     bodie: [{
       asset: "",
       nom: "",
