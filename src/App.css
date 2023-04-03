@@ -58,4 +58,7 @@ label {
 
 .TableBorder {
   border: 1px solid;
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
 }

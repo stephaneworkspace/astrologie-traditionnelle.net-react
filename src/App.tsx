@@ -27,7 +27,7 @@ interface JsonCgiApi {
   aspect: [{
     id: number,
     nom: string,
-    asset?: string,
+    asset: string,
     liens: [{
       aspect_id?: number,
       aspect_name?: string,
@@ -66,7 +66,7 @@ function App() {
     aspect: [{
       id: 0,
       nom: "",
-      asset: undefined,
+      asset: "",
       liens: [{
         aspect_id: undefined,
         aspect_name: undefined,
@@ -155,221 +155,288 @@ function App() {
   }))
 
   let aspectTr: JSX.Element[] = [];
+  let soleil: JSX.Element = <div/>;
+  let lune: JSX.Element = <div/>;
+  let mercure: JSX.Element = <div/>;
+  let venus: JSX.Element = <div/>;
+  let mars: JSX.Element = <div/>;
+  let jupiter: JSX.Element = <div/>;
+  let saturne: JSX.Element = <div/>;
+  let uranus: JSX.Element = <div/>;
+  let neptune: JSX.Element = <div/>;
+  let pluton: JSX.Element = <div/>;
+  let noeudLunaire: JSX.Element = <div/>;
   bodies.aspect.forEach((el => {
+    let soleil = <div/>;
+    let lune = <div/>;
+    let mercure = <div/>;
+    let venus = <div/>;
+    let mars = <div/>;
+    let jupiter = <div/>;
+    let saturne = <div/>;
+    let uranus = <div/>;
+    let neptune = <div/>;
+    let pluton = <div/>;
+    let noeudLunaire = <div/>;
+    let chiron = <div/>;
+    let ceres = <div/>;
+    let noeudLunaireSud = <div/>;
+    el.liens.forEach(liens => {
+      if (liens.id == 0 && liens.asset != undefined) {
+        soleil = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
+      }
+      if (liens.id == 1 && liens.asset != undefined) {
+        lune = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
+      }
+      if (liens.id == 2 && liens.asset != undefined) {
+        mercure = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
+      }
+      if (liens.id == 3 && liens.asset != undefined) {
+        venus = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
+      }
+      if (liens.id == 4 && liens.asset != undefined) {
+        mars = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
+      }
+      if (liens.id == 5 && liens.asset != undefined) {
+        jupiter = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
+      }
+      if (liens.id == 6 && liens.asset != undefined) {
+        saturne = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
+      }
+      if (liens.id == 7 && liens.asset != undefined) {
+        uranus = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
+      }
+      if (liens.id == 8 && liens.asset != undefined) {
+        neptune = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
+      }
+      if (liens.id == 9 && liens.asset != undefined) {
+        pluton = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
+      }
+      if (liens.id == 11 && liens.asset != undefined) {
+        noeudLunaire = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
+      }
+      if (liens.id == 15 && liens.asset != undefined) {
+        chiron = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
+      }
+      if (liens.id == 17 && liens.asset != undefined) {
+        ceres = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
+      }
+      if (liens.id == 24 && liens.asset != undefined) {
+        noeudLunaireSud = <img src={"data:image/svg+xml;base64," + liens.asset} width={20} height={20} alt={liens.aspect_name}/>
+      }
+    })
     switch (el.id) {
-      case 0:
+      case 0: // Soleil
         aspectTr.push(<tr key={el.id}>
-          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
-          <td colSpan={15}></td>
-        </tr>)
-        break
-      case 1:
-        aspectTr.push(<tr key={el.id}>
-          <td className="TableBorder"></td>
           <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
           <td colSpan={14}></td>
         </tr>)
         break
-      case 2:
+      case 1: // Lune
         aspectTr.push(<tr key={el.id}>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
+          <td className="TableBorder">{soleil}</td>
           <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
           <td colSpan={13}></td>
         </tr>)
         break
-      case 3:
+      case 2: // Mercure
         aspectTr.push(<tr key={el.id}>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
+          <td className="TableBorder">{soleil}</td>
+          <td className="TableBorder">{lune}</td>
           <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
           <td colSpan={12}></td>
         </tr>)
         break
-      case 4:
+      case 3: // Venus
         aspectTr.push(<tr key={el.id}>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
+          <td className="TableBorder">{soleil}</td>
+          <td className="TableBorder">{lune}</td>
+          <td className="TableBorder">{mercure}</td>
           <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
           <td colSpan={11}></td>
         </tr>)
         break
-      case 5:
+      case 4: // Mars
         aspectTr.push(<tr key={el.id}>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
+          <td className="TableBorder">{soleil}</td>
+          <td className="TableBorder">{lune}</td>
+          <td className="TableBorder">{mercure}</td>
+          <td className="TableBorder">{venus}</td>
           <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
           <td colSpan={10}></td>
         </tr>)
         break
-      case 6:
+      case 5: // Jupiter
         aspectTr.push(<tr key={el.id}>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
+          <td className="TableBorder">{soleil}</td>
+          <td className="TableBorder">{lune}</td>
+          <td className="TableBorder">{mercure}</td>
+          <td className="TableBorder">{venus}</td>
+          <td className="TableBorder">{mars}</td>
           <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
           <td colSpan={9}></td>
         </tr>)
         break
-      case 7:
+      case 6: // Saturne
         aspectTr.push(<tr key={el.id}>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
+          <td className="TableBorder">{soleil}</td>
+          <td className="TableBorder">{lune}</td>
+          <td className="TableBorder">{mercure}</td>
+          <td className="TableBorder">{venus}</td>
+          <td className="TableBorder">{mars}</td>
+          <td className="TableBorder">{jupiter}</td>
           <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
           <td colSpan={8}></td>
         </tr>)
         break
-      case 8:
+      case 7: // Uranus
         aspectTr.push(<tr key={el.id}>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
+          <td className="TableBorder">{soleil}</td>
+          <td className="TableBorder">{lune}</td>
+          <td className="TableBorder">{mercure}</td>
+          <td className="TableBorder">{venus}</td>
+          <td className="TableBorder">{mars}</td>
+          <td className="TableBorder">{jupiter}</td>
+          <td className="TableBorder">{saturne}</td>
           <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
           <td colSpan={7}></td>
         </tr>)
         break
-      case 9:
+      case 8: // Neptune
         aspectTr.push(<tr key={el.id}>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
+          <td className="TableBorder">{soleil}</td>
+          <td className="TableBorder">{lune}</td>
+          <td className="TableBorder">{mercure}</td>
+          <td className="TableBorder">{venus}</td>
+          <td className="TableBorder">{mars}</td>
+          <td className="TableBorder">{jupiter}</td>
+          <td className="TableBorder">{saturne}</td>
+          <td className="TableBorder">{uranus}</td>
           <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
           <td colSpan={6}></td>
         </tr>)
         break
-      case 11:
+      case 9: // Pluton
         aspectTr.push(<tr key={el.id}>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
+          <td className="TableBorder">{soleil}</td>
+          <td className="TableBorder">{lune}</td>
+          <td className="TableBorder">{mercure}</td>
+          <td className="TableBorder">{venus}</td>
+          <td className="TableBorder">{mars}</td>
+          <td className="TableBorder">{jupiter}</td>
+          <td className="TableBorder">{saturne}</td>
+          <td className="TableBorder">{uranus}</td>
+          <td className="TableBorder">{neptune}</td>
           <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
           <td colSpan={5}></td>
         </tr>)
         break
-      case 15:
+      case 11: // Noeud lunaire
         aspectTr.push(<tr key={el.id}>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
+          <td className="TableBorder">{soleil}</td>
+          <td className="TableBorder">{lune}</td>
+          <td className="TableBorder">{mercure}</td>
+          <td className="TableBorder">{venus}</td>
+          <td className="TableBorder">{mars}</td>
+          <td className="TableBorder">{jupiter}</td>
+          <td className="TableBorder">{saturne}</td>
+          <td className="TableBorder">{uranus}</td>
+          <td className="TableBorder">{neptune}</td>
+          <td className="TableBorder">{pluton}</td>
           <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
           <td colSpan={4}></td>
         </tr>)
         break
-      case 17:
+      case 15: // Chrion
         aspectTr.push(<tr key={el.id}>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
+          <td className="TableBorder">{soleil}</td>
+          <td className="TableBorder">{lune}</td>
+          <td className="TableBorder">{mercure}</td>
+          <td className="TableBorder">{venus}</td>
+          <td className="TableBorder">{mars}</td>
+          <td className="TableBorder">{jupiter}</td>
+          <td className="TableBorder">{saturne}</td>
+          <td className="TableBorder">{uranus}</td>
+          <td className="TableBorder">{neptune}</td>
+          <td className="TableBorder">{pluton}</td>
+          <td className="TableBorder">{noeudLunaire}</td>
           <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
           <td colSpan={3}></td>
         </tr>)
         break
-      case 24:
+      case 17: // Ceres
         aspectTr.push(<tr key={el.id}>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
+          <td className="TableBorder">{soleil}</td>
+          <td className="TableBorder">{lune}</td>
+          <td className="TableBorder">{mercure}</td>
+          <td className="TableBorder">{venus}</td>
+          <td className="TableBorder">{mars}</td>
+          <td className="TableBorder">{jupiter}</td>
+          <td className="TableBorder">{saturne}</td>
+          <td className="TableBorder">{uranus}</td>
+          <td className="TableBorder">{neptune}</td>
+          <td className="TableBorder">{pluton}</td>
+          <td className="TableBorder">{noeudLunaire}</td>
+          <td className="TableBorder">{chiron}</td>
           <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
           <td colSpan={2}></td>
         </tr>)
         break
+      case 24: // Noeud lunaire sud
+        aspectTr.push(<tr key={el.id}>
+          <td className="TableBorder">{soleil}</td>
+          <td className="TableBorder">{lune}</td>
+          <td className="TableBorder">{mercure}</td>
+          <td className="TableBorder">{venus}</td>
+          <td className="TableBorder">{mars}</td>
+          <td className="TableBorder">{jupiter}</td>
+          <td className="TableBorder">{saturne}</td>
+          <td className="TableBorder">{uranus}</td>
+          <td className="TableBorder">{neptune}</td>
+          <td className="TableBorder">{pluton}</td>
+          <td className="TableBorder">{noeudLunaire}</td>
+          <td className="TableBorder">{chiron}</td>
+          <td className="TableBorder">{ceres}</td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+          <td colSpan={1}></td>
+        </tr>)
+        break
       case 98:
         aspectTr.push(<tr key={el.id}>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td>Asc</td>
-          <td></td>
+          <td className="TableBorder">{soleil}</td>
+          <td className="TableBorder">{lune}</td>
+          <td className="TableBorder">{mercure}</td>
+          <td className="TableBorder">{venus}</td>
+          <td className="TableBorder">{mars}</td>
+          <td className="TableBorder">{jupiter}</td>
+          <td className="TableBorder">{saturne}</td>
+          <td className="TableBorder">{uranus}</td>
+          <td className="TableBorder">{neptune}</td>
+          <td className="TableBorder">{pluton}</td>
+          <td className="TableBorder">{noeudLunaire}</td>
+          <td className="TableBorder">{chiron}</td>
+          <td className="TableBorder">{ceres}</td>
+          <td className="TableBorder">{noeudLunaireSud}</td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
         </tr>)
         break
       case 99:
         aspectTr.push(<tr key={el.id}>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td className="TableBorder"></td>
-          <td>Mc</td>
+          <td className="TableBorder">{soleil}</td>
+          <td className="TableBorder">{lune}</td>
+          <td className="TableBorder">{mercure}</td>
+          <td className="TableBorder">{venus}</td>
+          <td className="TableBorder">{mars}</td>
+          <td className="TableBorder">{jupiter}</td>
+          <td className="TableBorder">{saturne}</td>
+          <td className="TableBorder">{uranus}</td>
+          <td className="TableBorder">{neptune}</td>
+          <td className="TableBorder">{pluton}</td>
+          <td className="TableBorder">{noeudLunaire}</td>
+          <td className="TableBorder">{chiron}</td>
+          <td className="TableBorder">{ceres}</td>
+          <td className="TableBorder">{noeudLunaireSud}</td>
+          <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
         </tr>)
         break
     }
