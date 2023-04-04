@@ -262,16 +262,25 @@ function App() {
   let bodiesTr: JSX.Element[] = []
   bodies.bodie.forEach((el => {
     bodiesTr.push(<tr key={el.nom}>
-      <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
+      <td>
+        <div className="Astre"
+             style={{backgroundImage: "url(\"data:image/svg+xml;base64," + el.asset + "\")"}}/>
+      </td>
       <td style={{textAlign: "left"}}>{el.nom}</td>
-      <td><img src={"data:image/svg+xml;base64," + el.sign.asset} width={20} height={20} alt={el.sign.nom}/></td>
+      <td>
+        <div className="Sign"
+             style={{backgroundImage: "url(\"data:image/svg+xml;base64," + el.sign.asset + "\")"}}/>
+      </td>
       <td style={{textAlign: "right"}}>{el.deg}</td>
       <td style={{textAlign: "right"}}>°</td>
       <td style={{textAlign: "right"}}>{el.min}</td>
       <td style={{textAlign: "right"}}>'</td>
       <td style={{textAlign: "right"}}>{el.sec}</td>
       <td style={{textAlign: "right"}}>"</td>
-      <td><img src={"data:image/svg+xml;base64," + el.sign_transit.asset} width={20} height={20} alt={el.sign.nom}/></td>
+      <td>
+        <div className="Sign"
+             style={{backgroundImage: "url(\"data:image/svg+xml;base64," + el.sign_transit.asset + "\")"}}/>
+      </td>
       <td style={{textAlign: "right"}}>{el.deg_transit}</td>
       <td style={{textAlign: "right"}}>°</td>
       <td style={{textAlign: "right"}}>{el.min_transit}</td>
@@ -1238,7 +1247,6 @@ function App() {
           <div className="columns">
             <div className="column">
               <fieldset className="FieldSet">
-                <legend className="subtitle is-3">Carte du ciel: Natal et Transit.</legend>
                 <div className="Chart" style={{backgroundImage: "url(\"https://astrologie-traditionnelle.net/cgi-bin/SweInterface.cgi?sw_chart=true" +
                       "&year=" + date[0] +
                       "&month=" + date[1] +
@@ -1254,7 +1262,7 @@ function App() {
             </div>
             <div className="column">
               <fieldset className="FieldSet">
-                <legend className="subtitle is-3">Naissance et options</legend>
+                <legend className="subtitle is-3">Données de naissance</legend>
                 <label>
                   Date:
                   <br />
@@ -1309,7 +1317,6 @@ function App() {
           <div className="columns">
             <div className="column">
               <fieldset className="FieldSet">
-                <legend className="subtitle is-3">Aspects</legend>
                 <table>
                   <tbody>
                   {aspectTr}
@@ -1318,14 +1325,20 @@ function App() {
               </fieldset>
             </div>
             <div className="column">
-              <fieldset className="FieldSet">
-                <legend className="subtitle is-3">Astres: Natal et Transit</legend>
-                <table>
-                  <tbody>
-                  {bodiesTr}
-                  </tbody>
-                </table>
-              </fieldset>
+                <div className="table-container">
+                  <table className="table is-hoverable is-narrow">
+                    <thead>
+                    <tr>
+                      <td colSpan={2} className="TableBodie">Astre</td>
+                      <td colSpan={7} className="TableBodie">Natal</td>
+                      <td colSpan={7} className="TableBodie">Transit</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {bodiesTr}
+                    </tbody>
+                  </table>
+                </div>
             </div>
           </div>
         </form>
