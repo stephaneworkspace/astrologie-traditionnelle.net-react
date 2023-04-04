@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
-//import logo from './logo.svg';
+//import logo from './logo.svg'
 import './App.css'
 import {match} from "assert"
 /*
@@ -142,6 +142,60 @@ function App() {
     if (sw_debug) {
       url = "http://localhost:8888/"
     }
+    let aspect_options: number[] = []
+    if (formData.Soleil) {
+      aspect_options.push(1)
+    }
+    if (formData.Lune) {
+      aspect_options.push(2)
+    }
+    if (formData.Mercure) {
+      aspect_options.push(3)
+    }
+    if (formData.Mars) {
+      aspect_options.push(4)
+    }
+    if (formData.Jupiter) {
+      aspect_options.push(5)
+    }
+    if (formData.Saturne) {
+      aspect_options.push(6)
+    }
+    if (formData.Uranus) {
+      aspect_options.push(7)
+    }
+    if (formData.Neptune) {
+      aspect_options.push(8)
+    }
+    if (formData.Pluton) {
+      aspect_options.push(9)
+    }
+    if (formData.NoeudLunaire) {
+      aspect_options.push(11)
+    }
+    if (formData.Chiron) {
+      aspect_options.push(15)
+    }
+    if (formData.Ceres) {
+      aspect_options.push(17)
+    }
+    if (formData.NoeudLunaireSud) {
+      aspect_options.push(24)
+    }
+    if (formData.Asc) {
+      aspect_options.push(98)
+    }
+    if (formData.Mc) {
+      aspect_options.push(99)
+    }
+    let aspect_option: string = "";
+    aspect_options.forEach(el => {
+      if (aspect_option != "") {
+        aspect_option += ","
+      }
+      aspect_option = String(el)
+    })
+
     url += "cgi-bin/SweInterface.cgi?sw_json=true" +
         "&year=" + formData.year +
         "&month=" + formData.month +
@@ -150,7 +204,8 @@ function App() {
         "&min=" + formData.min +
         "&lat=" + formData.lat +
         "&lng=" + formData.lng +
-        "&gmt=" + formData.gmt
+        "&gmt=" + formData.gmt +
+        "&aspect_option=" + aspect_option
     const response = await axios.get(url)
     const data = await response.data
     setBodies(data)
@@ -164,58 +219,83 @@ function App() {
     getBodies()
   }
 
-  function handleCheckboxChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const { name } = event.target
-    switch (name) {
-      case "Soleil":
-        setFormData({ ...formData, [name]: !formData.Soleil })
-        break
-      case "Lune":
-        setFormData({ ...formData, [name]: !formData.Lune })
-        break
-      case "Mercure":
-        setFormData({ ...formData, [name]: !formData.Mercure })
-        break
-      case "Venus":
-        setFormData({ ...formData, [name]: !formData.Venus })
-        break
-      case "Mars":
-        setFormData({ ...formData, [name]: !formData.Mars })
-        break
-      case "Jupiter":
-        setFormData({ ...formData, [name]: !formData.Jupiter })
-        break
-      case "Saturne":
-        setFormData({ ...formData, [name]: !formData.Saturne })
-        break
-      case "Uranus":
-        setFormData({ ...formData, [name]: !formData.Uranus })
-        break
-      case "Neptune":
-        setFormData({ ...formData, [name]: !formData.Neptune })
-        break
-      case "Pluton":
-        setFormData({ ...formData, [name]: !formData.Pluton })
-        break
-      case "NoeudLunaire":
-        setFormData({ ...formData, [name]: !formData.NoeudLunaire })
-        break
-      case "Chiron":
-        setFormData({ ...formData, [name]: !formData.Chiron })
-        break
-      case "Ceres":
-        setFormData({ ...formData, [name]: !formData.Ceres })
-        break
-      case "NoeudLunaireSud":
-        setFormData({ ...formData, [name]: !formData.NoeudLunaireSud })
-        break
-      case "Asc":
-        setFormData({ ...formData, [name]: !formData.Asc })
-        break
-      case "Mc":
-        setFormData({ ...formData, [name]: !formData.Mc })
-        break
-    }
+  function handleCheckboxChangeSoleil(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["Soleil"]: !formData.Soleil })
+    getBodies()
+  }
+
+  function handleCheckboxChangeLune(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["Lune"]: !formData.Lune })
+    getBodies()
+  }
+
+  function handleCheckboxChangeMercure(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["Mercure"]: !formData.Mercure })
+    getBodies()
+  }
+
+  function handleCheckboxChangeVenus(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["Venus"]: !formData.Venus })
+    getBodies()
+  }
+
+  function handleCheckboxChangeMars(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["Mars"]: !formData.Mars })
+    getBodies()
+  }
+
+  function handleCheckboxChangeJupiter(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["Jupiter"]: !formData.Jupiter })
+    getBodies()
+  }
+
+  function handleCheckboxChangeSaturne(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["Saturne"]: !formData.Saturne })
+    getBodies()
+  }
+
+  function handleCheckboxChangeUranus(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["Uranus"]: !formData.Uranus })
+    getBodies()
+  }
+
+  function handleCheckboxChangeNeptune(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["Neptune"]: !formData.Neptune })
+    getBodies()
+  }
+
+  function handleCheckboxChangePluton(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["Pluton"]: !formData.Pluton })
+    getBodies()
+  }
+
+  function handleCheckboxChangeNoeudLunaire(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["NoeudLunaire"]: !formData.NoeudLunaire })
+    getBodies()
+  }
+
+  function handleCheckboxChangeChiron(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["Chiron"]: !formData.Chiron })
+    getBodies()
+  }
+
+  function handleCheckboxChangeCeres(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["Ceres"]: !formData.Ceres })
+    getBodies()
+  }
+
+  function handleCheckboxChangeNoeudLunaireSud(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["NoeudLunaireSud"]: !formData.NoeudLunaireSud })
+    getBodies()
+  }
+
+  function handleCheckboxChangeAsc(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["Asc"]: !formData.Asc })
+    getBodies()
+  }
+
+  function handleCheckboxChangeMc(_event: React.ChangeEvent<HTMLInputElement>) {
+    setFormData({ ...formData, ["Mc"]: !formData.Mc })
     getBodies()
   }
 
@@ -261,58 +341,100 @@ function App() {
     let checkBox: JSX.Element = <div />
     switch (el.id) {
       case 0: // Soleil
-        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Soleil} onChange={handleCheckboxChange} />
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.Soleil}
+                             onChange={handleCheckboxChangeSoleil} />
         break
       case 1: // Lune
-        checkBox = <Checkbox label={el.nom} asset={el.asset}  value={formData.Lune} onChange={handleCheckboxChange} />
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.Lune}
+                             onChange={handleCheckboxChangeLune} />
         break
       case 2: // Mercure
-        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Mercure} onChange={handleCheckboxChange} />
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.Mercure}
+                             onChange={handleCheckboxChangeMercure} />
         break
       case 3: // Venus
-        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Venus} onChange={handleCheckboxChange} />
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.Venus}
+                             onChange={handleCheckboxChangeVenus} />
         break
       case 4: // Mars
-        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Mars} onChange={handleCheckboxChange} />
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.Mars}
+                             onChange={handleCheckboxChangeMars} />
         break
       case 5: // Jupiter
-        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Jupiter} onChange={handleCheckboxChange} />
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.Jupiter}
+                             onChange={handleCheckboxChangeJupiter} />
         break
       case 6: // Saturne
-        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Saturne} onChange={handleCheckboxChange} />
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.Saturne}
+                             onChange={handleCheckboxChangeSaturne} />
         break
       case 7: // Uranus
-        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Uranus} onChange={handleCheckboxChange} />
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.Uranus}
+                             onChange={handleCheckboxChangeUranus} />
         break
       case 8: // Neptune
-        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Neptune} onChange={handleCheckboxChange} />
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.Neptune}
+                             onChange={handleCheckboxChangeNeptune} />
         break
       case 9: // Pluton
-        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Pluton} onChange={handleCheckboxChange} />
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.Pluton}
+                             onChange={handleCheckboxChangePluton} />
         break
       case 11: // Noeud Lunaire
         checkBox = <Checkbox label={el.nom}
                              asset={el.asset}
                              value={formData.NoeudLunaire}
-                             onChange={handleCheckboxChange} />
+                             onChange={handleCheckboxChangeNoeudLunaire} />
         break
       case 15: // Chiron
-        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Chiron} onChange={handleCheckboxChange} />
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.Chiron}
+                             onChange={handleCheckboxChangeChiron} />
         break
       case 17: // Ceres
-        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Ceres} onChange={handleCheckboxChange} />
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.Ceres}
+                             onChange={handleCheckboxChangeCeres} />
         break
       case 24: // Noeud Lunaire Sud
         checkBox = <Checkbox label={el.nom}
                              asset={el.asset}
                              value={formData.NoeudLunaireSud}
-                             onChange={handleCheckboxChange} />
+                             onChange={handleCheckboxChangeNoeudLunaireSud} />
         break
       case 98: // Asc
-        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Asc} onChange={handleCheckboxChange} />
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.Asc}
+                             onChange={handleCheckboxChangeAsc} />
         break
       case 99: // Mc
-        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Mc} onChange={handleCheckboxChange} />
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.Mc}
+                             onChange={handleCheckboxChangeMc} />
         break
     }
     aspectCheckBox.push(
