@@ -21,6 +21,7 @@ interface FormData {
   lng: number
   gmt: number
   color: number
+  aspect: number
   Soleil: boolean
   Lune: boolean
   Mercure: boolean
@@ -79,6 +80,7 @@ interface JsonCgiApi {
 function App() {
   const [formData, setFormData] = React.useState<FormData>({
     year: 1984, month: 4, day: 1, hour: 0, min: 0, lat: 46.12, lng: 6.09, gmt: 2, color: 1,
+    aspect: 1,
     Soleil: true,
     Lune: true,
     Mercure: true,
@@ -158,8 +160,6 @@ function App() {
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target
-    console.log(name)
-    console.log(value)
     setFormData({ ...formData, [name]: value })
     getBodies()
   }
@@ -1219,6 +1219,14 @@ function App() {
   if (aspect_option != "") {
     aspect_option = "&aspect_option=" + aspect_option
   }
+  // Pour une meilleures présentation le code d'avant n'est pas executé
+  if (formData.aspect == 0) {
+    aspect_option = ""
+  } else if (formData.aspect == 1) {
+    aspect_option = "&aspect_option=0,1,2,3,4,5,6,8,9,11,98,99"
+  } else if (formData.aspect == 2) {
+      aspect_option = "&aspect_option=0,1,2,3,4,5,6,8,9,11,15,17,24,98,99"
+  }
 
   return (
       <div className="App">
@@ -1309,6 +1317,20 @@ function App() {
                     <select name="color" value={formData.color} onChange={handleSelectChange}>
                       <option value="0">Clair</option>
                       <option value="1">Sombre</option>
+                    </select>
+                  </label>
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={2} />
+                <td>
+                  <label>
+                    Aspect:
+                    <br />
+                    <select name="aspect" value={formData.aspect} onChange={handleSelectChange}>
+                      <option value="0">Aucun</option>
+                      <option value="1">Soleil à Noeud Lunaire + Asc et Mc</option>
+                      <option value="2">Tous les aspects</option>
                     </select>
                   </label>
                 </td>
