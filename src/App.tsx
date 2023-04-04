@@ -1313,14 +1313,6 @@ function App() {
                   </label>
                 </td>
               </tr>
-              <tr>
-                <td colSpan={3}>
-                  <fieldset>
-                    <legend>Aspects:</legend>
-                    {aspectCheckBox}
-                  </fieldset>
-                </td>
-              </tr>
             </tbody>
           </table>
         </form>
@@ -1330,3 +1322,15 @@ function App() {
 }
 
 export default App
+
+/*
+Problème c++
+              <tr>
+                <td colSpan={3}>
+                  <fieldset>
+                    <legend>Aspects:</legend>
+                    {aspectCheckBox}
+                  </fieldset>
+                </td>
+              </tr>
+ */
