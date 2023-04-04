@@ -79,17 +79,17 @@ interface JsonCgiApi {
 function App() {
   const [formData, setFormData] = React.useState<FormData>({
     year: 1984, month: 4, day: 1, hour: 0, min: 0, lat: 46.12, lng: 6.09, gmt: 2, color: 1,
-    Soleil: false,
-    Lune: false,
-    Mercure: false,
-    Venus: false,
-    Mars: false,
-    Jupiter: false,
-    Saturne: false,
-    Uranus: false,
-    Neptune: false,
-    Pluton: false,
-    NoeudLunaire: false,
+    Soleil: true,
+    Lune: true,
+    Mercure: true,
+    Venus: true,
+    Mars: true,
+    Jupiter: true,
+    Saturne: true,
+    Uranus: true,
+    Neptune: true,
+    Pluton: true,
+    NoeudLunaire: true,
     Ceres: false,
     Chiron: false,
     NoeudLunaireSud: false,
@@ -142,60 +142,6 @@ function App() {
     if (sw_debug) {
       url = "http://localhost:8888/"
     }
-    let aspect_options: number[] = []
-    if (formData.Soleil) {
-      aspect_options.push(1)
-    }
-    if (formData.Lune) {
-      aspect_options.push(2)
-    }
-    if (formData.Mercure) {
-      aspect_options.push(3)
-    }
-    if (formData.Mars) {
-      aspect_options.push(4)
-    }
-    if (formData.Jupiter) {
-      aspect_options.push(5)
-    }
-    if (formData.Saturne) {
-      aspect_options.push(6)
-    }
-    if (formData.Uranus) {
-      aspect_options.push(7)
-    }
-    if (formData.Neptune) {
-      aspect_options.push(8)
-    }
-    if (formData.Pluton) {
-      aspect_options.push(9)
-    }
-    if (formData.NoeudLunaire) {
-      aspect_options.push(11)
-    }
-    if (formData.Chiron) {
-      aspect_options.push(15)
-    }
-    if (formData.Ceres) {
-      aspect_options.push(17)
-    }
-    if (formData.NoeudLunaireSud) {
-      aspect_options.push(24)
-    }
-    if (formData.Asc) {
-      aspect_options.push(98)
-    }
-    if (formData.Mc) {
-      aspect_options.push(99)
-    }
-    let aspect_option: string = "";
-    aspect_options.forEach(el => {
-      if (aspect_option != "") {
-        aspect_option += ","
-      }
-      aspect_option = String(el)
-    })
-
     url += "cgi-bin/SweInterface.cgi?sw_json=true" +
         "&year=" + formData.year +
         "&month=" + formData.month +
@@ -204,8 +150,7 @@ function App() {
         "&min=" + formData.min +
         "&lat=" + formData.lat +
         "&lng=" + formData.lng +
-        "&gmt=" + formData.gmt +
-        "&aspect_option=" + aspect_option
+        "&gmt=" + formData.gmt
     const response = await axios.get(url)
     const data = await response.data
     setBodies(data)
@@ -1215,9 +1160,69 @@ function App() {
     }
   }))
 
+  let aspect_options: number[] = []
+  if (formData.Soleil) {
+    aspect_options.push(0)
+  }
+  if (formData.Lune) {
+    aspect_options.push(1)
+  }
+  if (formData.Mercure) {
+    aspect_options.push(2)
+  }
+  if (formData.Venus) {
+    aspect_options.push(3)
+  }
+  if (formData.Mars) {
+    aspect_options.push(4)
+  }
+  if (formData.Jupiter) {
+    aspect_options.push(5)
+  }
+  if (formData.Saturne) {
+    aspect_options.push(6)
+  }
+  if (formData.Uranus) {
+    aspect_options.push(7)
+  }
+  if (formData.Neptune) {
+    aspect_options.push(8)
+  }
+  if (formData.Pluton) {
+    aspect_options.push(9)
+  }
+  if (formData.NoeudLunaire) {
+    aspect_options.push(10)
+  }
+  if (formData.Chiron) {
+    aspect_options.push(11)
+  }
+  if (formData.Ceres) {
+    aspect_options.push(12)
+  }
+  if (formData.NoeudLunaireSud) {
+    aspect_options.push(13)
+  }
+  if (formData.Asc) {
+    aspect_options.push(14)
+  }
+  if (formData.Mc) {
+    aspect_options.push(15)
+  }
+  let aspect_option: string = "";
+  aspect_options.forEach(el => {
+    if (aspect_option != "") {
+      aspect_option += ","
+    }
+    aspect_option += String(el)
+  })
+  if (aspect_option != "") {
+    aspect_option = "&aspect_option=" + aspect_option
+  }
+
   return (
       <div className="App">
-      <header className="App-header" style={{backgroundColor: formData.color == 0 ? "#ffffff" : "#282c34", color: formData.color == 0 ? "black" : "white"}}>
+        <header className="App-header" style={{backgroundColor: formData.color == 0 ? "#ffffff" : "#282c34", color: formData.color == 0 ? "black" : "white"}}>
         <div className="Chart" style={{backgroundImage: "url(\"http://astrologie-traditionnelle.net/cgi-bin/SweInterface.cgi?sw_chart=true" +
               "&year=" + formData.year +
               "&month=" + formData.month +
@@ -1227,7 +1232,8 @@ function App() {
               "&lat=" + formData.lat +
               "&lng=" + formData.lng +
               "&gmt=" + formData.gmt +
-              "&color=" + formData.color + "\")"}}></div>
+              "&color=" + formData.color +
+              aspect_option + "\")"}}></div>
         <table>
           <tbody>
           {bodiesTr}
