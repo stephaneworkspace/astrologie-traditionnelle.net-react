@@ -45,6 +45,7 @@
   -o-background-size: 100% 100%;
   -webkit-background-size: 100% 100%;
   background-size:cover;
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 0px) and (max-width: 360px)  {
@@ -65,10 +66,16 @@
     width: 376px;
   }
 }
-@media screen and (min-width: 468px) and (max-width: 1023px)  {
+@media screen and (min-width: 468px) and (max-width: 599px)  {
   .Chart {
-    height: 470px;
-    width: 470px;
+    height: 376px;
+    width: 376px;
+  }
+}
+@media screen and (min-width: 600px) and (max-width: 1023px)  {
+  .Chart {
+    height: 400px;
+    width: 400px;
   }
 }
 

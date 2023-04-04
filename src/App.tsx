@@ -271,22 +271,12 @@ function App() {
         <div className="Sign"
              style={{backgroundImage: "url(\"data:image/svg+xml;base64," + el.sign.asset + "\")"}}/>
       </td>
-      <td style={{textAlign: "right"}}>{el.deg}</td>
-      <td style={{textAlign: "right"}}>°</td>
-      <td style={{textAlign: "right"}}>{el.min}</td>
-      <td style={{textAlign: "right"}}>'</td>
-      <td style={{textAlign: "right"}}>{el.sec}</td>
-      <td style={{textAlign: "right"}}>"</td>
+      <td style={{textAlign: "right"}}>{el.deg_min_sec}</td>
       <td>
         <div className="Sign"
              style={{backgroundImage: "url(\"data:image/svg+xml;base64," + el.sign_transit.asset + "\")"}}/>
       </td>
-      <td style={{textAlign: "right"}}>{el.deg_transit}</td>
-      <td style={{textAlign: "right"}}>°</td>
-      <td style={{textAlign: "right"}}>{el.min_transit}</td>
-      <td style={{textAlign: "right"}}>'</td>
-      <td style={{textAlign: "right"}}>{el.sec_transit}</td>
-      <td style={{textAlign: "right"}}>"</td>
+      <td style={{textAlign: "right"}}>{el.deg_min_sec_transit}</td>
     </tr>)
   }))
 
@@ -1309,8 +1299,8 @@ function App() {
                     <thead>
                     <tr>
                       <td colSpan={2} className="TableBodie">Astre</td>
-                      <td colSpan={7} className="TableBodie">Natal</td>
-                      <td colSpan={7} className="TableBodie">Transit</td>
+                      <td colSpan={2} className="TableBodie">Natal</td>
+                      <td colSpan={2} className="TableBodie">Transit</td>
                     </tr>
                     </thead>
                     <tbody>
