@@ -1192,22 +1192,22 @@ function App() {
     aspect_options.push(9)
   }
   if (formData.NoeudLunaire) {
-    aspect_options.push(10)
-  }
-  if (formData.Chiron) {
     aspect_options.push(11)
   }
+  if (formData.Chiron) {
+    aspect_options.push(15)
+  }
   if (formData.Ceres) {
-    aspect_options.push(12)
+    aspect_options.push(17)
   }
   if (formData.NoeudLunaireSud) {
-    aspect_options.push(13)
+    aspect_options.push(24)
   }
   if (formData.Asc) {
-    aspect_options.push(14)
+    aspect_options.push(98)
   }
   if (formData.Mc) {
-    aspect_options.push(15)
+    aspect_options.push(99)
   }
   let aspect_option: string = "";
   aspect_options.forEach(el => {
