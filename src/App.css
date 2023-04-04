@@ -38,14 +38,40 @@
 }
 
 .Chart {
-  height: 450px;
-  width: 450px;
+  height: 470px;
+  width: 470px;
   /*background-image: url("http://astrologie-traditionnelle.net/cgi-bin/SweInterface.cgi?sw_chart=true");*/
   background-size:100% 100%;
   -o-background-size: 100% 100%;
   -webkit-background-size: 100% 100%;
   background-size:cover;
 }
+
+@media screen and (min-width: 0px) and (max-width: 360px)  {
+  .Chart {
+    height: 360px;
+    width: 360px;
+  }
+}
+@media screen and (min-width: 361px) and (max-width: 375px)  {
+  .Chart {
+    height: 375px;
+    width: 375px;
+  }
+}
+@media screen and (min-width: 376px) and (max-width: 467px)  {
+  .Chart {
+    height: 376px;
+    width: 376px;
+  }
+}
+@media screen and (min-width: 468px) and (max-width: 1023px)  {
+  .Chart {
+    height: 470px;
+    width: 470px;
+  }
+}
+
 
 label {
   width: 300px;

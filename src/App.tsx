@@ -1246,7 +1246,6 @@ function App() {
         <form onSubmit={handleSubmit}>
           <div className="columns">
             <div className="column">
-              <fieldset className="FieldSet">
                 <div className="Chart" style={{backgroundImage: "url(\"https://astrologie-traditionnelle.net/cgi-bin/SweInterface.cgi?sw_chart=true" +
                       "&year=" + date[0] +
                       "&month=" + date[1] +
@@ -1258,11 +1257,9 @@ function App() {
                       "&gmt=" + formData.gmt +
                       "&color=" + formData.color +
                       aspect_option + "\")"}}></div>
-              </fieldset>
             </div>
             <div className="column">
               <fieldset className="FieldSet">
-                <legend className="subtitle is-3">Données de naissance</legend>
                 <label>
                   Date:
                   <br />
@@ -1316,17 +1313,8 @@ function App() {
           </div>
           <div className="columns">
             <div className="column">
-              <fieldset className="FieldSet">
-                <table>
-                  <tbody>
-                  {aspectTr}
-                  </tbody>
-                </table>
-              </fieldset>
-            </div>
-            <div className="column">
                 <div className="table-container">
-                  <table className="table is-hoverable is-narrow">
+                  <table className="table is-hoverable is-fullwidth">
                     <thead>
                     <tr>
                       <td colSpan={2} className="TableBodie">Astre</td>
@@ -1339,6 +1327,15 @@ function App() {
                     </tbody>
                   </table>
                 </div>
+            </div>
+          </div>
+          <div className="columns">
+            <div className="column">
+              <table>
+                <tbody>
+                {aspectTr}
+                </tbody>
+              </table>
             </div>
           </div>
         </form>
