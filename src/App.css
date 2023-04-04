@@ -38,8 +38,8 @@
 }
 
 .Chart {
-  height: 700px;
-  width: 700px;
+  height: 450px;
+  width: 450px;
   /*background-image: url("http://astrologie-traditionnelle.net/cgi-bin/SweInterface.cgi?sw_chart=true");*/
   background-size:100% 100%;
   -o-background-size: 100% 100%;
@@ -61,4 +61,8 @@ label {
   width: 25px;
   height: 25px;
   vertical-align: middle;
+}
+
+.FieldSet {
+  text-align: left;
 }
