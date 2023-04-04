@@ -1291,15 +1291,6 @@ function App() {
                 </label>
                 <br />
                 <label>
-                  Couleur:
-                  <br />
-                  <select name="color" value={formData.color} onChange={handleSelectChange}>
-                    <option value="0">Clair</option>
-                    <option value="1">Sombre</option>
-                  </select>
-                </label>
-                <br />
-                <label>
                   Aspect:
                   <br />
                   <select name="aspect" value={formData.aspect} onChange={handleSelectChange}>
@@ -1356,4 +1347,19 @@ Problème c++
                   </fieldset>
                 </td>
               </tr>
+ */
+
+/*
+Bulma ne me donne pas envie de mettre du dark mode
+je peux utiliser une autre lib une autre fois
+                <label>
+                  Couleur:
+                  <br />
+                  <select name="color" value={formData.color} onChange={handleSelectChange}>
+                    <option value="0">Clair</option>
+                    <option value="1">Sombre</option>
+                  </select>
+                </label>
+                <br />
+
  */
