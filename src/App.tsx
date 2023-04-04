@@ -1,26 +1,42 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import axios from "axios"
 //import logo from './logo.svg';
-import './App.css';
-import {match} from "assert";
+import './App.css'
+import {match} from "assert"
 /*
 <img src={logo} className="App-logo" alt="logo" />
 */
 
 interface FormProps {
-  onSubmit: (data: FormData) => void;
+  onSubmit: (data: FormData) => void
 }
 
 interface FormData {
-  year: number;
-  month: number;
-  day: number;
-  hour: number;
-  min: number;
-  lat: number;
-  lng: number;
-  gmt: number;
-  color: number;
+  year: number
+  month: number
+  day: number
+  hour: number
+  min: number
+  lat: number
+  lng: number
+  gmt: number
+  color: number
+  Soleil: boolean
+  Lune: boolean
+  Mercure: boolean
+  Venus: boolean
+  Mars: boolean
+  Jupiter: boolean
+  Saturne: boolean
+  Uranus: boolean
+  Neptune: boolean
+  Pluton: boolean
+  NoeudLunaire: boolean
+  Chiron: boolean
+  Ceres: boolean
+  NoeudLunaireSud: boolean
+  Asc: boolean
+  Mc: boolean
 }
 
 interface JsonCgiApi {
@@ -61,7 +77,25 @@ interface JsonCgiApi {
 }
 
 function App() {
-  const [formData, setFormData] = React.useState<FormData>({ year: 1984, month: 4, day: 1, hour: 0, min: 0, lat: 46.12, lng: 6.09, gmt: 2, color: 1  });
+  const [formData, setFormData] = React.useState<FormData>({
+    year: 1984, month: 4, day: 1, hour: 0, min: 0, lat: 46.12, lng: 6.09, gmt: 2, color: 1,
+    Soleil: false,
+    Lune: false,
+    Mercure: false,
+    Venus: false,
+    Mars: false,
+    Jupiter: false,
+    Saturne: false,
+    Uranus: false,
+    Neptune: false,
+    Pluton: false,
+    NoeudLunaire: false,
+    Ceres: false,
+    Chiron: false,
+    NoeudLunaireSud: false,
+    Asc: false,
+    Mc: false,
+  })
   const [bodies, setBodies] = React.useState<JsonCgiApi>({
     aspect: [{
       id: 0,
@@ -89,11 +123,22 @@ function App() {
       sec_transit: 0,
       sign_transit: {asset: "", id: 0, nom: ""}
     }]
-  });
+  })
+
+  const Checkbox = ({ label, asset, value, onChange }) => {
+    return (
+        <div>
+          <input type="checkbox" name={label} checked={value} onChange={onChange} />
+          <label htmlFor={label}>
+            <img src={"data:image/svg+xml;base64," + asset} width={20} height={20} alt={label}/> {label}
+          </label>
+        </div>
+    )
+  }
 
   const getBodies = async () => {
-    const sw_debug = false;
-    let url = "https://astrologie-traditionnelle.net/";
+    const sw_debug = false
+    let url = "https://astrologie-traditionnelle.net/"
     if (sw_debug) {
       url = "http://localhost:8888/"
     }
@@ -105,34 +150,91 @@ function App() {
         "&min=" + formData.min +
         "&lat=" + formData.lat +
         "&lng=" + formData.lng +
-        "&gmt=" + formData.gmt;
+        "&gmt=" + formData.gmt
     const response = await axios.get(url)
-    const data = await response.data;
-    setBodies(data);
+    const data = await response.data
+    setBodies(data)
   }
 
   function handleInputChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
-    getBodies();
+    const { name, value } = event.target
+    console.log(name)
+    console.log(value)
+    setFormData({ ...formData, [name]: value })
+    getBodies()
+  }
+
+  function handleCheckboxChange(event: React.ChangeEvent<HTMLInputElement>) {
+    const { name } = event.target
+    switch (name) {
+      case "Soleil":
+        setFormData({ ...formData, [name]: !formData.Soleil })
+        break
+      case "Lune":
+        setFormData({ ...formData, [name]: !formData.Lune })
+        break
+      case "Mercure":
+        setFormData({ ...formData, [name]: !formData.Mercure })
+        break
+      case "Venus":
+        setFormData({ ...formData, [name]: !formData.Venus })
+        break
+      case "Mars":
+        setFormData({ ...formData, [name]: !formData.Mars })
+        break
+      case "Jupiter":
+        setFormData({ ...formData, [name]: !formData.Jupiter })
+        break
+      case "Saturne":
+        setFormData({ ...formData, [name]: !formData.Saturne })
+        break
+      case "Uranus":
+        setFormData({ ...formData, [name]: !formData.Uranus })
+        break
+      case "Neptune":
+        setFormData({ ...formData, [name]: !formData.Neptune })
+        break
+      case "Pluton":
+        setFormData({ ...formData, [name]: !formData.Pluton })
+        break
+      case "NoeudLunaire":
+        setFormData({ ...formData, [name]: !formData.NoeudLunaire })
+        break
+      case "Chiron":
+        setFormData({ ...formData, [name]: !formData.Chiron })
+        break
+      case "Ceres":
+        setFormData({ ...formData, [name]: !formData.Ceres })
+        break
+      case "NoeudLunaireSud":
+        setFormData({ ...formData, [name]: !formData.NoeudLunaireSud })
+        break
+      case "Asc":
+        setFormData({ ...formData, [name]: !formData.Asc })
+        break
+      case "Mc":
+        setFormData({ ...formData, [name]: !formData.Mc })
+        break
+    }
+    getBodies()
   }
 
   function handleSelectChange(event: React.ChangeEvent<HTMLSelectElement>) {
-    const { name, value } = event.target;
-    setFormData({ ...formData, [name]: value });
+    const { name, value } = event.target
+    setFormData({ ...formData, [name]: value })
   }
 
   function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
+    event.preventDefault()
   }
 
   useEffect(() => {
-    getBodies();
-  }, []);
+    getBodies()
+  }, [])
 
-  const [selectValue, setSelectValue] = React.useState("");
+  const [selectValue, setSelectValue] = React.useState("")
 
-  let bodiesTr: JSX.Element[] = [];
+  let bodiesTr: JSX.Element[] = []
   bodies.bodie.forEach((el => {
     bodiesTr.push(<tr key={el.nom}>
       <td><img src={"data:image/svg+xml;base64," + el.asset} width={20} height={20} alt={el.nom}/></td>
@@ -154,33 +256,98 @@ function App() {
     </tr>)
   }))
 
-  let aspectTr: JSX.Element[] = [];
-  let soleil: JSX.Element = <div/>;
-  let lune: JSX.Element = <div/>;
-  let mercure: JSX.Element = <div/>;
-  let venus: JSX.Element = <div/>;
-  let mars: JSX.Element = <div/>;
-  let jupiter: JSX.Element = <div/>;
-  let saturne: JSX.Element = <div/>;
-  let uranus: JSX.Element = <div/>;
-  let neptune: JSX.Element = <div/>;
-  let pluton: JSX.Element = <div/>;
-  let noeudLunaire: JSX.Element = <div/>;
+  let aspectCheckBox: JSX.Element[] = []
+  bodies.aspect.forEach(el => {
+    let checkBox: JSX.Element = <div />
+    switch (el.id) {
+      case 0: // Soleil
+        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Soleil} onChange={handleCheckboxChange} />
+        break
+      case 1: // Lune
+        checkBox = <Checkbox label={el.nom} asset={el.asset}  value={formData.Lune} onChange={handleCheckboxChange} />
+        break
+      case 2: // Mercure
+        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Mercure} onChange={handleCheckboxChange} />
+        break
+      case 3: // Venus
+        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Venus} onChange={handleCheckboxChange} />
+        break
+      case 4: // Mars
+        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Mars} onChange={handleCheckboxChange} />
+        break
+      case 5: // Jupiter
+        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Jupiter} onChange={handleCheckboxChange} />
+        break
+      case 6: // Saturne
+        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Saturne} onChange={handleCheckboxChange} />
+        break
+      case 7: // Uranus
+        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Uranus} onChange={handleCheckboxChange} />
+        break
+      case 8: // Neptune
+        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Neptune} onChange={handleCheckboxChange} />
+        break
+      case 9: // Pluton
+        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Pluton} onChange={handleCheckboxChange} />
+        break
+      case 11: // Noeud Lunaire
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.NoeudLunaire}
+                             onChange={handleCheckboxChange} />
+        break
+      case 15: // Chiron
+        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Chiron} onChange={handleCheckboxChange} />
+        break
+      case 17: // Ceres
+        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Ceres} onChange={handleCheckboxChange} />
+        break
+      case 24: // Noeud Lunaire Sud
+        checkBox = <Checkbox label={el.nom}
+                             asset={el.asset}
+                             value={formData.NoeudLunaireSud}
+                             onChange={handleCheckboxChange} />
+        break
+      case 98: // Asc
+        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Asc} onChange={handleCheckboxChange} />
+        break
+      case 99: // Mc
+        checkBox = <Checkbox label={el.nom} asset={el.asset} value={formData.Mc} onChange={handleCheckboxChange} />
+        break
+    }
+    aspectCheckBox.push(
+        <div key={el.id}>
+          {checkBox}
+        </div>)
+  })
+
+  let aspectTr: JSX.Element[] = []
+  let soleil: JSX.Element = <div/>
+  let lune: JSX.Element = <div/>
+  let mercure: JSX.Element = <div/>
+  let venus: JSX.Element = <div/>
+  let mars: JSX.Element = <div/>
+  let jupiter: JSX.Element = <div/>
+  let saturne: JSX.Element = <div/>
+  let uranus: JSX.Element = <div/>
+  let neptune: JSX.Element = <div/>
+  let pluton: JSX.Element = <div/>
+  let noeudLunaire: JSX.Element = <div/>
   bodies.aspect.forEach((el => {
-    let soleil = <div/>;
-    let lune = <div/>;
-    let mercure = <div/>;
-    let venus = <div/>;
-    let mars = <div/>;
-    let jupiter = <div/>;
-    let saturne = <div/>;
-    let uranus = <div/>;
-    let neptune = <div/>;
-    let pluton = <div/>;
-    let noeudLunaire = <div/>;
-    let chiron = <div/>;
-    let ceres = <div/>;
-    let noeudLunaireSud = <div/>;
+    let soleil = <div/>
+    let lune = <div/>
+    let mercure = <div/>
+    let venus = <div/>
+    let mars = <div/>
+    let jupiter = <div/>
+    let saturne = <div/>
+    let uranus = <div/>
+    let neptune = <div/>
+    let pluton = <div/>
+    let noeudLunaire = <div/>
+    let chiron = <div/>
+    let ceres = <div/>
+    let noeudLunaireSud = <div/>
     switch (el.id) {
       case 0: // Soleil
         aspectTr.push(<tr key={el.id}>
@@ -195,7 +362,7 @@ function App() {
               soleil =
                   <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
             }
-          });
+          })
         })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
@@ -214,7 +381,7 @@ function App() {
               lune =
                   <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
             }
-          });
+          })
         })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
@@ -238,7 +405,7 @@ function App() {
               mercure =
                   <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
             }
-          });
+          })
         })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
@@ -267,7 +434,7 @@ function App() {
               venus =
                   <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
             }
-          });
+          })
         })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
@@ -301,7 +468,7 @@ function App() {
               mars =
                   <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
             }
-          });
+          })
         })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
@@ -340,7 +507,7 @@ function App() {
               jupiter =
                   <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
             }
-          });
+          })
         })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
@@ -384,7 +551,7 @@ function App() {
               saturne =
                   <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
             }
-          });
+          })
         })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
@@ -433,7 +600,7 @@ function App() {
               uranus =
                   <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
             }
-          });
+          })
         })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
@@ -487,7 +654,7 @@ function App() {
               neptune =
                   <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
             }
-          });
+          })
         })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
@@ -546,7 +713,7 @@ function App() {
               pluton =
                   <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
             }
-          });
+          })
         })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
@@ -610,7 +777,7 @@ function App() {
               noeudLunaire =
                   <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
             }
-          });
+          })
         })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
@@ -679,7 +846,7 @@ function App() {
               chiron =
                   <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
             }
-          });
+          })
         })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
@@ -753,7 +920,7 @@ function App() {
               ceres =
                   <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
             }
-          });
+          })
         })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
@@ -828,7 +995,7 @@ function App() {
               ceres =
                   <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
             }
-          });
+          })
         })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
@@ -903,7 +1070,7 @@ function App() {
               ceres =
                   <img src={"data:image/svg+xml;base64," + b.asset} width={20} height={20} alt={b.aspect_name}/>
             }
-          });
+          })
         })
         aspectTr.push(<tr key={el.id}>
           <td className="TableBorder">{soleil}</td>
@@ -1018,12 +1185,20 @@ function App() {
                   </label>
                 </td>
               </tr>
+              <tr>
+                <td colSpan={3}>
+                  <fieldset>
+                    <legend>Aspects:</legend>
+                    {aspectCheckBox}
+                  </fieldset>
+                </td>
+              </tr>
             </tbody>
           </table>
         </form>
       </header>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

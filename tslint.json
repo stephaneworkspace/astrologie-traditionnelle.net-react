@@ -1,0 +1,12 @@
+{
+  "extends": "tslint:recommended",
+  "rulesDirectory": ["src"],
+  "rules": {
+    "semicolon": [true, "never"],
+    "triple-equals": false,
+    "prefer-const": false,
+    "no-shadowed-variable": false,
+    "variable-name": false,
+    "comment-format": false
+  }
+}
