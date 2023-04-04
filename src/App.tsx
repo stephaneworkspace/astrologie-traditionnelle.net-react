@@ -1223,7 +1223,7 @@ function App() {
   return (
       <div className="App">
         <header className="App-header" style={{backgroundColor: formData.color == 0 ? "#ffffff" : "#282c34", color: formData.color == 0 ? "black" : "white"}}>
-        <div className="Chart" style={{backgroundImage: "url(\"http://astrologie-traditionnelle.net/cgi-bin/SweInterface.cgi?sw_chart=true" +
+        <div className="Chart" style={{backgroundImage: "url(\"https://astrologie-traditionnelle.net/cgi-bin/SweInterface.cgi?sw_chart=true" +
               "&year=" + formData.year +
               "&month=" + formData.month +
               "&day=" + formData.day +
