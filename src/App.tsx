@@ -77,7 +77,7 @@ interface JsonCgiApi {
 
 function App() {
   const [formData, setFormData] = React.useState<FormData>({
-    date: "1984-04-01", hourMin: "00:00", lat: 46.12, lng: 6.09, gmt: 2, color: 1,
+    date: "1984-04-01", hourMin: "00:00", lat: 46.12, lng: 6.09, gmt: 2, color: 0,
     aspect: 1,
     Soleil: true,
     Lune: true,
