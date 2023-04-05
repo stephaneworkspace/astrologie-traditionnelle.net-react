@@ -1337,14 +1337,16 @@ function App() {
                   <div className="field-body">
                     <div className="field">
                       <p className="control">
-                        <select className="select is-primary"
-                                name="aspect"
-                                value={formData.aspect}
-                                onChange={handleSelectChange}>
-                          <option value="0">Aucun</option>
-                          <option value="1">Soleil à Noeud Lunaire + Asc et Mc</option>
-                          <option value="2">Tous les aspects</option>
-                        </select>
+                        <div className="select is-primary">
+                          <select
+                              name="aspect"
+                              value={formData.aspect}
+                              onChange={handleSelectChange}>
+                            <option value="0">Aucun</option>
+                            <option value="1">Soleil à Noeud Lunaire + Asc et Mc</option>
+                            <option value="2">Tous les aspects</option>
+                          </select>
+                        </div>
                       </p>
                     </div>
                   </div>
