@@ -118,3 +118,7 @@ label {
   background-size: contain;
   background-repeat: no-repeat;
 }
+
+.box {
+  margin-top: 40px;
+}

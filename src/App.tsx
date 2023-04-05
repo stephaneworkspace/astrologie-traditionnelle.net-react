@@ -1249,47 +1249,107 @@ function App() {
                       aspect_option + "\")"}}></div>
             </div>
             <div className="column">
-              <fieldset className="FieldSet">
-                <label>
-                  Date:
-                  <br />
-                  <input type="date" name="date" value={formData.date} onChange={handleInputChange} />
-                </label>
-                <br />
-                <label>
-                  Heure:
-                  <br />
-                  <input type="time" name="hourMin" value={formData.hourMin} onChange={handleInputChange} />
-                </label>
-                <br />
-                <label>
-                  GMT:
-                  <br />
-                  <input type="number" name="gmt" value={formData.gmt} onChange={handleInputChange} />
-                </label>
-                <br />
-                <label>
-                  Latitude:
-                  <br />
-                  <input type="number" name="lat" value={formData.lat} onChange={handleInputChange} />
-                </label>
-                <br />
-                <label>
-                  Longitude:
-                  <br />
-                  <input type="number" name="lng" value={formData.lng} onChange={handleInputChange} />
-                </label>
-                <br />
-                <label>
-                  Aspect:
-                  <br />
-                  <select name="aspect" value={formData.aspect} onChange={handleSelectChange}>
-                    <option value="0">Aucun</option>
-                    <option value="1">Soleil à Noeud Lunaire + Asc et Mc</option>
-                    <option value="2">Tous les aspects</option>
-                  </select>
-                </label>
-              </fieldset>
+              <div className="box">
+                <div className="field is-horizontal">
+                  <div className="field-label is-normal">
+                    <label className="label">Date</label>
+                  </div>
+                  <div className="field-body">
+                    <div className="field">
+                      <p className="control">
+                        <input className="input is-primary"
+                               type="date"
+                               name="date"
+                               value={formData.date}
+                               onChange={handleInputChange} />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="field is-horizontal">
+                  <div className="field-label is-normal">
+                    <label className="label">Heure</label>
+                  </div>
+                  <div className="field-body">
+                    <div className="field">
+                      <p className="control">
+                        <input className="input is-primary"
+                               type="time"
+                               name="hourMin"
+                               value={formData.hourMin}
+                               onChange={handleInputChange} />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="field is-horizontal">
+                  <div className="field-label is-normal">
+                    <label className="label">GMT</label>
+                  </div>
+                  <div className="field-body">
+                    <div className="field">
+                      <p className="control">
+                        <input className="input is-primary"
+                               type="number"
+                               name="gmt"
+                               value={formData.gmt}
+                               onChange={handleInputChange} />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="field is-horizontal">
+                  <div className="field-label is-normal">
+                    <label className="label">Latitude</label>
+                  </div>
+                  <div className="field-body">
+                    <div className="field">
+                      <p className="control">
+                        <input className="input is-primary"
+                               type="number"
+                               name="lat"
+                               value={formData.lat}
+                               onChange={handleInputChange} />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="field is-horizontal">
+                  <div className="field-label is-normal">
+                    <label className="label">Longitude</label>
+                  </div>
+                  <div className="field-body">
+                    <div className="field">
+                      <p className="control">
+                        <input className="input is-primary"
+                               type="number"
+                               name="lng"
+                               value={formData.lng}
+                               onChange={handleInputChange} />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="field is-horizontal">
+                  <div className="field-label is-normal">
+                    <label className="label">Aspect</label>
+                  </div>
+                  <div className="field-body">
+                    <div className="field">
+                      <p className="control">
+                        <select className="select is-primary"
+                                name="aspect"
+                                value={formData.aspect}
+                                onChange={handleSelectChange}>
+                          <option value="0">Aucun</option>
+                          <option value="1">Soleil à Noeud Lunaire + Asc et Mc</option>
+                          <option value="2">Tous les aspects</option>
+                        </select>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
           <div className="columns">
