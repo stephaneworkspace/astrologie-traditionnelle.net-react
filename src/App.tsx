@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from "axios"
 //import logo from './logo.svg'
+import baniere from './baniere_astro.png'
 import './App.css'
 import 'bulma/css/bulma.min.css'
 import {match} from "assert"
@@ -1230,6 +1231,7 @@ function App() {
   const date = formData.date.split("-")
   return (
       <div className="App">
+        <img src={baniere} className="Baniere" alt="Astrologie-traditionnelle.net par bressani.dev" />
         <header className="App-header" style={{backgroundColor: formData.color == 0 ? "#ffffff" : "#282c34", color: formData.color == 0 ? "black" : "white"}}>
         <p />
         <p />

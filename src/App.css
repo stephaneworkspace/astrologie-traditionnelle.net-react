@@ -7,6 +7,15 @@
   pointer-events: none;
 }
 
+.Baniere {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 768px;
+  padding-top: 10px;
+  text-align: center;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -121,4 +130,5 @@ label {
 
 .box {
   margin-top: 40px;
+  box-shadow: none !important;
 }
