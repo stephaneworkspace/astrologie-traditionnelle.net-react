@@ -1375,6 +1375,12 @@ function App() {
                 </div>
             </div>
           </div>
+        </form>
+      </header>
+    </div>
+  )
+}
+/*
           <div className="columns">
             <div className="column">
               <table>
@@ -1384,11 +1390,7 @@ function App() {
               </table>
             </div>
           </div>
-        </form>
-      </header>
-    </div>
-  )
-}
+ */
 
 export default App
 
