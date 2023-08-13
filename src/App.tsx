@@ -283,7 +283,7 @@ function App() {
   }))
 
   let aspectCheckBox: JSX.Element[] = []
-  bodies.aspect.forEach(el => {
+  /*bodies.aspect.forEach(el => {
     let checkBox: JSX.Element = <div />
     switch (el.id) {
       case 0: // Soleil
@@ -387,9 +387,9 @@ function App() {
         <div key={el.id}>
           {checkBox}
         </div>)
-  })
+  })*/
 
-  let aspectTr: JSX.Element[] = []
+  //let aspectTr: JSX.Element[] = []
   let soleil: JSX.Element = <div/>
   let lune: JSX.Element = <div/>
   let mercure: JSX.Element = <div/>
@@ -401,6 +401,7 @@ function App() {
   let neptune: JSX.Element = <div/>
   let pluton: JSX.Element = <div/>
   let noeudLunaire: JSX.Element = <div/>
+  /*
   bodies.aspect.forEach((el => {
     let soleil = <div/>
     let lune = <div/>
@@ -1159,7 +1160,7 @@ function App() {
         </tr>)
         break
     }
-  }))
+  }))*/
 
   let aspect_options: number[] = []
   if (formData.Soleil) {
