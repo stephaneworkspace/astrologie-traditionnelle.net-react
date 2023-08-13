@@ -139,13 +139,14 @@ function App() {
 
   const getBodies = async () => {
     const sw_debug = false
-    let url = "https://astrologie-traditionnelle.net/"
-    if (sw_debug) {
-      url = "http://localhost:8888/"
-    }
+    //let url = "https://astrologie-traditionnelle.net/"
+    //if (sw_debug) {
+    //  url = "http://localhost:8888/"
+    //}
     const hourMin = formData.hourMin.split(":")
     const date = formData.date.split("-")
-    url += "cgi-bin/SweInterface.cgi?sw_json=true" +
+    //url += "cgi-bin/SweInterface.cgi?sw_json=true" +
+    let url = "https://cgi.bressani.dev/astro.fcgi?sw_json=true" +
         "&year=" + date[0] +
         "&month=" + date[1] +
         "&day=" + date[2] +
@@ -1238,7 +1239,7 @@ function App() {
         <form onSubmit={handleSubmit}>
           <div className="columns">
             <div className="column">
-                <div className="Chart" style={{backgroundImage: "url(\"https://astrologie-traditionnelle.net/cgi-bin/SweInterface.cgi?sw_chart=true" +
+                <div className="Chart" style={{backgroundImage: "url(\"https://cgi.bressani.dev/astro.fcgi?sw_chart=true" +
                       "&year=" + date[0] +
                       "&month=" + date[1] +
                       "&day=" + date[2] +
