@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.1b7c2d84.css",
-    "main.js": "/static/js/main.e6f0cbab.js",
-    "static/js/787.18b2d8ec.chunk.js": "/static/js/787.18b2d8ec.chunk.js",
+    "main.css": "/static/css/main.02e9e24a.css",
+    "main.js": "/static/js/main.30458738.js",
+    "static/js/453.80d2159d.chunk.js": "/static/js/453.80d2159d.chunk.js",
     "static/media/baniere_astro.png": "/static/media/baniere_astro.7c137f0105daf00a9106.png",
     "index.html": "/index.html",
-    "main.1b7c2d84.css.map": "/static/css/main.1b7c2d84.css.map",
-    "main.e6f0cbab.js.map": "/static/js/main.e6f0cbab.js.map",
-    "787.18b2d8ec.chunk.js.map": "/static/js/787.18b2d8ec.chunk.js.map"
+    "main.02e9e24a.css.map": "/static/css/main.02e9e24a.css.map",
+    "main.30458738.js.map": "/static/js/main.30458738.js.map",
+    "453.80d2159d.chunk.js.map": "/static/js/453.80d2159d.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.1b7c2d84.css",
-    "static/js/main.e6f0cbab.js"
+    "static/css/main.02e9e24a.css",
+    "static/js/main.30458738.js"
   ]
 }
